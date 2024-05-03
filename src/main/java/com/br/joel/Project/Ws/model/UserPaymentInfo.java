@@ -1,21 +1,19 @@
 package com.br.joel.Project.Ws.model;
 
-import jakarta.persistence.*;
 import jdk.jfr.Enabled;
-import lombok.AllArgsConstructor;
-import lombok.Cleanup;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 
 
-@Enabled
+@Entity
 @Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class UserPaymentInfo {
 
     @Id
@@ -25,18 +23,20 @@ public class UserPaymentInfo {
     @Column(name = "card_number")
     private String cardNumber;
     @Column(name = "card_expiration_month")
-    private int cardExpirationMonth;
+    private Long cardExpirationMonth;
     @Column(name = "card_expiration_year")
-    private int cardExpirationYear;
+    private Long cardExpirationYear;
     @Column(name = "card_security_code")
-    private int cardSecurityCode;
+    private Long cardSecurityCode;
 
     private BigDecimal price;
 
-    private  int instalments;
+    private  Long installments;
     @Column(name = "dt_payment")
     private Instant dtPayment;
-    @Column(name = "user_id")
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User userId;
 
 

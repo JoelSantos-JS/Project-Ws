@@ -1,14 +1,17 @@
 package com.br.joel.Project.Ws.model;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
-@Table
+@Table(name = "subscriptions_type")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,13 +19,13 @@ public class SubscriptionType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subscription_type_id")
+    @Column(name = "subscriptions_type_id")
     private Long id;
 
-
+    @Size(max = 120)
     private String name;
     @Column(name = "access_months")
-    private int accessMonths;
+    private Integer access_months;
 
     private BigDecimal price;
     @Column(name = "product_key")

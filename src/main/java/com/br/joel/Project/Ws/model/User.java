@@ -1,10 +1,10 @@
 package com.br.joel.Project.Ws.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
@@ -31,12 +31,12 @@ public class User {
     private Instant dt_expiration;
 
 
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "user_type_id")
     private  UserType userType;
 
-    @OneToOne
-    @JoinColumn(name = "subscription_type_id")
+    @OneToOne()
+    @JoinColumn(name = "subscriptions_type_id")
     private SubscriptionType subscriptionType ;
 
 
