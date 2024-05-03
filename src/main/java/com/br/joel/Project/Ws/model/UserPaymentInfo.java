@@ -1,17 +1,17 @@
 package com.br.joel.Project.Ws.model;
 
-import jakarta.persistence.*;
 import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Cleanup;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 
 
-@Enabled
+@Entity
 @Table
 @Data
 @AllArgsConstructor
@@ -36,7 +36,9 @@ public class UserPaymentInfo {
     private  int instalments;
     @Column(name = "dt_payment")
     private Instant dtPayment;
-    @Column(name = "user_id")
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User userId;
 
 
