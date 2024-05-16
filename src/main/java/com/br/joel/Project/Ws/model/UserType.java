@@ -9,6 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
+import javax.persistence.*;
+
 @Entity
 @Table
 @AllArgsConstructor
